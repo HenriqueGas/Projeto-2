@@ -70,10 +70,13 @@ A aplicação simula um equipamento de monitoramento utilizado em processos indu
 
 - **ADC:**  
   - Resolução: 10 bits
-  - Canal analógico: AN0
-  - Referência externa:
+  - Canal analógico: AN0 - simulando o sensor LM35
+  - Referência interna:
     - Vref+ = 1 V
-    - Vref− = 0 V
+    - Vref− = 0 V - Foi necessário fazer uma modificação e utilizar a referência interna, devido a uma limitação do simulador SimulIDE.
+   
+
+
 
 - **Timer 0:**  
   Responsável pela geração da base de tempo da contagem longa (60 segundos).  
