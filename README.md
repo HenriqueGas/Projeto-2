@@ -120,6 +120,15 @@ O circuito foi desenvolvido no SimulIDE e contém:
   - Contagem regressiva
   - Acionamento do LED acima de 50 °C
 
+## Resultados
+
+A leitura de temperatura via ADC respondeu de forma contínua e estável à variação do potenciômetro, com os valores sendo exibidos no LCD no formato XX.X C sem o uso de variáveis do tipo float, conforme exigido. O LED de alerta acendeu corretamente ao ultrapassar 50°C e apagou ao retornar abaixo desse limiar, simulando o comportamento de uma resistência de forno industrial.
+
+A contagem regressiva funcionou corretamente nos dois modos. No modo longo, o TMR0 com prescaler 1:256 gerou uma base de tempo de 1 segundo, resultando em uma contagem de 60 segundos precisa. No modo curto, o TMR1 com prescaler 1:8 gerou estouros a cada 250ms, e a cada 4 estouros o tempo foi decrementado em 1 segundo, totalizando 10 segundos. Ambos os timers operaram via interrupção, garantindo que a contagem ocorresse de forma independente do loop principal.
+
+
+A principal dificuldade encontrada foi o comportamento do módulo ADC do SimulIDE 0.4.15-SR10 com referência de tensão externa, que não respondeu corretamente mesmo após diversas tentativas de configuração. A solução adotada foi uso do Vref interno de com ajuste na fórmula de conversão. No hardware real, o Vref externo de 1V funcionaria conforme especificado no enunciado, oferecendo maior sensibilidade e precisão na leitura.
+
 ---
 
 ## Referências
